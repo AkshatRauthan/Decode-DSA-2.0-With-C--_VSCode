@@ -49,7 +49,8 @@
         "optional": "cpp",
         "random": "cpp",
         "string_view": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "climits": "cpp"
     },
     "editor.defaultFoldingRangeProvider": null
 }
