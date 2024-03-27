@@ -4,7 +4,6 @@ using namespace std;
 
 vector<vector<pair<int,int>>> graph;
 int v;
-
 void display(){
     for (int i=0; i<v; i++){
         cout<<i<<" -> ";
@@ -14,7 +13,6 @@ void display(){
         cout<<"\n";
     }
 }
-
 void add_edge(int src, int dest, int weight, bool bi_dir = true){
     graph[src][dest].first = dest;
     graph[src][dest].second = weight;
