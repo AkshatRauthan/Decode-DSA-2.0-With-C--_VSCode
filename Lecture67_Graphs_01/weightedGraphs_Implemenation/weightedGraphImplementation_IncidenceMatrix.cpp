@@ -4,10 +4,11 @@ using namespace std;
 
 vector<vector< pair<int,int> >> graph;
 int v; // Number Of Vertices
+int e; // Number Of Edges
 int idx = 0;
 void display(){
     cout<<"       ";
-    for (int i=0; i<graph[i].size(); i++) cout<<"E"<<i+1<<"     ";
+    for (int i=0; i<e; i++) cout<<"E"<<i+1<<"     ";
     cout<<"\n";
     for (int i=0; i<v; i++){
         cout<<"V"<<i<<" : ";
@@ -31,11 +32,10 @@ int main(){
     cout<<"\nEnter 0 For Unidirectional Graph Or 1 For Bidirectional Graph : \n";
     cin>>bi_dir;
     cout<<"\nEnter The Number Of Edges : \n";
-    int e; // Number Of Edges
     cin>>e;
     graph.resize(v, vector< pair<int,int> >(e, {0, false}));
     cout<<"\nEnter The Source, Destination And Weight Of The "<<e<<" Edges : \n";
-    while (e--){
+    for (int i=0; i<e; i++){
         int s, d, w;
         cin>>s>>d>>w;
         add_edge(s, d, w, bi_dir);
