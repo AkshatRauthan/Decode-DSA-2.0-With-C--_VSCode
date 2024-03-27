@@ -5,7 +5,6 @@ using namespace std;
 vector<vector< pair<int,int> >> graph;
 int v; // Number Of Vertices
 int idx = 0;
-
 void display(){
     cout<<"       ";
     for (int i=0; i<graph[i].size(); i++) cout<<"E"<<i+1<<"     ";
@@ -16,7 +15,6 @@ void display(){
         cout<<"\n";
     }
 }
-
 void add_edge(int src, int dest, int weight, bool bi_dir = true){
     if (src == dest) graph[dest][idx] = {weight, 2};
     else {
@@ -26,7 +24,6 @@ void add_edge(int src, int dest, int weight, bool bi_dir = true){
     }
     idx++;
 }
-
 int main(){
     cout<<"\nEnter The Number Of Vertices : \n";
     cin>>v;
