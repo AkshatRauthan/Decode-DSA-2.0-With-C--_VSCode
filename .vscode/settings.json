@@ -50,7 +50,10 @@
         "random": "cpp",
         "string_view": "cpp",
         "numbers": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "list": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp"
     },
     "editor.defaultFoldingRangeProvider": null,
     "C_Cpp.errorSquiggles": "enabled",
