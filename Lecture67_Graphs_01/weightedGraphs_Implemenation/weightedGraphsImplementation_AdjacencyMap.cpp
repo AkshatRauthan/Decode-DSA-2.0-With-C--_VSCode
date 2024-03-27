@@ -5,7 +5,6 @@ using namespace std;
 
 vector<unordered_map<int,int>> graph;
 int v;
-
 void display(){
     for (int i=0; i<graph.size(); i++){
         cout<<i<<" -> ";
@@ -13,12 +12,10 @@ void display(){
         cout<<"\n";
     }
 }
-
 void add_edge(int src, int dest,  int weight, bool bi_dir = true){
     graph[src].insert({dest, weight});
     if (bi_dir) graph[dest].insert({src, weight});
 }
-
 int main(){
     cout<<"\nEnter The Number Of Vertices : \n";
     cin>>v;
