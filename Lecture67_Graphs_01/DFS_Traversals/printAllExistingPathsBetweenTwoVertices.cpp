@@ -8,12 +8,10 @@ vector<list<int>> graph;
 unordered_set<int> visited;
 vector<vector<int>> ans;    
 int v;
-
 void add_edge(int src, int dest, bool bi_dir = true){
     graph[src].push_back(dest);
     if (bi_dir && src != dest) graph[dest].push_back(src);
 }
-
 void dfs(int curr, int end, vector<int> &path){
     if (curr == end){
         path.push_back(curr);
@@ -32,13 +30,11 @@ void dfs(int curr, int end, vector<int> &path){
     visited.erase(curr);
     return;
 }
-
 void allPaths(int src, int dest){
     visited.clear();
     vector<int> v = {};
     return dfs(src,  dest, v);
 }
-
 int main(){
     cout<<"\nEnter The Number Of Vertices : \n";
     cin>>v;
