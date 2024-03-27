@@ -52,5 +52,10 @@
         "numbers": "cpp",
         "climits": "cpp"
     },
-    "editor.defaultFoldingRangeProvider": null
+    "editor.defaultFoldingRangeProvider": null,
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.compilerArgs": [
+        "${default}"
+    ],
+    "C_Cpp.default.compilerPath": "${default}"
 }

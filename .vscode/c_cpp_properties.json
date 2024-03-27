@@ -3,7 +3,11 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\Program Files\\JetBrains\\CLion 2023.2\\bin\\mingw\\lib\\gcc\\x86_64-w64-mingw32\\13.1.0\\include\\c++",
+                "C:\\Program Files\\JetBrains\\CLion 2023.2\\bin\\mingw\\lib\\gcc\\x86_64-w64-mingw32\\13.1.0\\include\\ssp",
+                "C:/Program Files/JetBrains/CLion 2023.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++",
+                "C:/Program Files/JetBrains/CLion 2023.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"
             ],
             "defines": [
                 "_DEBUG",
@@ -13,8 +17,8 @@
             "windowsSdkVersion": "10.0.22621.0",
             "compilerPath": "C:/MinGW/bin/g++.exe",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "${default}",
             "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
