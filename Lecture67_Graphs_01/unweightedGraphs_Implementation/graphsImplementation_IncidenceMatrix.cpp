@@ -12,7 +12,6 @@ void display(){
         cout<<"\n";
     }
 }
-
 void add_edge(int src, int dest, bool bi_dir = true){
     if (src == dest) graph[dest][idx] = {2, true};
     else {
@@ -22,7 +21,6 @@ void add_edge(int src, int dest, bool bi_dir = true){
     }
     idx++;
 }
-
 int main(){
     cout<<"\nEnter The Number Of Vertices : \n";
     cin>>v;
