@@ -7,12 +7,10 @@ using namespace std;
 vector<list<int>> graph;
 unordered_set<int> visited;
 int v;
-
 void add_edge(int src, int dest, bool bi_dir = true){
     graph[src].push_back(dest);
     if (bi_dir && src != dest) graph[dest].push_back(src);
 }
-
 bool dfs(int curr, int end){
     if (curr == end) return true;
     visited.insert(curr);
@@ -24,11 +22,9 @@ bool dfs(int curr, int end){
     }
     return false;
 }
-
 bool anyPath(int src, int dest){
     return dfs(src,  dest);
 }
-
 int main(){
     cout<<"\nEnter The Number Of Vertices : \n";
     cin>>v;
