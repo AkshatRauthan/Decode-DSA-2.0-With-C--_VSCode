@@ -8,12 +8,10 @@ using namespace std;
 vector<list<int>> graph;
 unordered_set<int> visited;
 int v;
-
 void add_edge(int src, int dest, bool bi_dir = true){
     graph[src].push_back(dest);
     if (bi_dir && src != dest) graph[dest].push_back(src);
 }
-
 void bfs(int src, int dest, vector<int> &distance){
     queue<int> q;
     visited.clear();
@@ -33,13 +31,11 @@ void bfs(int src, int dest, vector<int> &distance){
         }
     }
 }
-
 int shortestDistance(int src, int dest){
     vector<int> v;
     bfs(src, dest, v);
     return v[dest];
 }
-
 int main(){
     cout<<"\nEnter The Number Of Vertices : \n";
     cin>>v;
