@@ -1,0 +1,73 @@
+class Solution {
+public:
+    vector<vector<int>> v1, v2;
+    bool pacific(vector<vector<int>> & v,int i, int j){
+        if ( !i || !j ) return true;
+        if (i >= v.size() || j >= v[0].size()) return false;
+        if (v1[i][j] != -1) return v1[i][j];
+        bool flag1 = false, flag2 = false;
+        if (v[i][j] >= v[i-1][j]) flag1 = pacific(v, i-1, j);
+        if (v[i][j] >= v[i][j-1]) flag2 = pacific(v, i, j-1);
+        if (flag1 || flag2) return v1[i][j] = true;
+        if (j < v[0].size()-1 && v[i][j] > v[i][j+1] &&  pacific(v, i, j+1)) flag1 =   true;
+        if (i < v.size()-1 && v[i][j] > v[i+1][j] && pacific(v, i+1, j)) flag2 = true;
+        if (flag1 || flag2) return v1[i][j] = true;
+        return v1[i][j] = false;
+    }
+    bool atlantic(vector<vector<int>> & v,int i, int j){
+        if (i >= v.size()-1 || j >= v[0].size()-1) return true;
+        if (v2[i][j] != -1) return v2[i][j];
+        bool flag1 = false, flag2 = false, flag3 = false, flag4 = false;
+        if (v[i][j] >= v[i+1][j]) flag1 = atlantic(v, i+1, j);
+        if (v[i][j] >= v[i][j+1]) flag2 = atlantic(v, i, j+1);
+        if (flag1 || flag2) return v2[i][j] = true;
+        if (i > 0 && v[i][j] > v[i-1][j] && atlantic(v, i-1, j)) flag1 = v2[i][j] = true;
+        if (j > 0 && v[i][j] > v[i][j-1] && atlantic(v, i, j-1)) flag2 = v2[i][j] = true;
+        if (flag1 || flag2) return v1[i][j] = true;
+        return v2[i][j] = false;
+    }
+    vector<vector<int>> pacificAtlantic(vector<vector<int>>& v) {
+        v1.resize(v.size(), vector<int> (v[0].size(), -1));
+        v2.resize(v.size(), vector<int> (v[0].size(), -1));
+        vector<vector<int>> ans;
+        for (int i=0; i<v.size(); i++) for (int j=0; j<v[0].size(); j++){
+            if ( pacific(v, i, j) && atlantic(v, i, j)) ans.push_back({i,j});
+        }
+        return ans;
+    }
+};
+
+class Solution {
+public:
+    void dfs(vector<vector<int>>& heights, vector<vector<bool>>& visit, int x, int y, int h){
+        if (x<0 || y<0 || x>=heights.size() || y>=heights[0].size() || visit[x][y] == true || heights[x][y]<h){
+            return;
+        }
+        h=heights[x][y];
+        visit[x][y] = true;
+        dfs(heights,visit,x-1,y,h),dfs(heights,visit,x+1,y,h),dfs(heights,visit,x,y-1,h),dfs(heights,visit,x,y+1,h);
+    }
+    vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
+        vector<vector<bool>> mapP(heights.size(),vector<bool>(heights[0].size(),false));
+        vector<vector<bool>> mapA(heights.size(),vector<bool>(heights[0].size(),false));
+        vector<vector<int>> ans;
+        for (int i=0;i<heights.size();i++){
+            dfs(heights,mapP,i,0,-1);
+            dfs(heights,mapA,i,heights[0].size()-1,-1);
+        }
+        
+        for (int j=0;j<heights[0].size();j++){
+            dfs(heights,mapP,0,j,-1);
+            dfs(heights,mapA,heights.size()-1,j,-1);
+        }
+        
+        for (int i=0;i<heights.size();i++){
+            for (int j=0;j<heights[0].size();j++){
+                if (mapP[i][j] && mapA[i][j]){
+                    ans.push_back({i,j});
+                }
+            }
+        }
+        return ans;
+    }
+};
