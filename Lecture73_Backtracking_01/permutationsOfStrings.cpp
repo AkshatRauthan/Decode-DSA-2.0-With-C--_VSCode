@@ -3,6 +3,8 @@
 #include "vector"
 using namespace std;
 
+// Permutations Of Strings Having No Repeated Values
+
 void strPermutations(string str, string prm, vector<string>& v){
     if (str.empty()){
         v.push_back(prm);
@@ -16,12 +18,24 @@ void strPermutations(string str, string prm, vector<string>& v){
     
 }
 
+void strPermutationsOptimised(string& str, int idx, vector<string>& v){
+    if (idx >= str.length()-1){
+        v.push_back(str);
+        return;
+    }
+    for (int i = idx; i<str.length(); i++){
+        swap(str[i], str[idx]);
+        strPermutationsOptimised(str, idx+1, v);
+        swap(str[i], str[idx]);    // Backtracking
+    }
+}
+
 int main(){
     string s;
     cout<<"\nEnter The String Whose Permutations You Want To Calculate : \n";
     cin>>s;
     vector<string> v;
-    strPermutations(s, "", v);
+    strPermutationsOptimised(s, 0, v);
     cout<<"\nThe "<<v.size()<<" Permutations Of The Given String Are As Follows : \n";
     for (auto str : v) cout<<str<<"\n";
     system("pause");
