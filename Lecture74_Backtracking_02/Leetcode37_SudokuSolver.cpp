@@ -2,37 +2,28 @@
 #include "vector"
 using namespace std;
 
-vector<vector<char>> solution;
-bool canInsert(vector<vector<char>>& v, char ch, int r, int c){
-    for (int i=0; i<v.size(); i++) if (v[i][c] == ch) return false; // Column
-    for (int j=0; j<v[0].size(); j++) if (v[r][j] == ch) return false; // Row
-    int i = r/3 , j = c/3;
-    i = 3*i , j = 3*j;
-    while (i < (r/3 + 1) * 3){
-        while (j < (c/3 + 1) * 3) if (v[i][j++] == ch) return false;
-        i++;
+bool canInsert(vector<vector<char>>& v, int ch, int r, int c){
+    for (int i=0; i<9; i++) if (v[i][c] - '0' == ch) return false; // Column
+    for (int j=0; j<9; j++) if (v[r][j] - '0'== ch) return false; // Row
+    int x = (r/3) * 3, y = (c/3) * 3;
+    for (int i=x; i<x+3; i++){
+        for (int j=y; j<y+3; j++) if (v[i][j] - '0' == ch) return false;
     }
     return true;
 }
 
-void helper(vector<vector<char>>& v, int i, int j){
-    if (j > 8) return helper(v, i+1, 0);
-    if (i > 8) return;
-    if (i == 8 && j == 8){
-        if (v[i][j] == '.') for (char ch = '1'; ch <= '9'; ch++){
-                if (canInsert(v, ch, i, j)){
-                    v[i][j] = ch;
-                    break;
-                }   
-            }
-        solution.assign(v.begin(), v.end());
+bool helper(vector<vector<char>>& v, int r, int c){
+    if (r == 8 && c == 9) return true;
+    if (c == 9) return helper(v, r+1, 0);
+    if (v[r][c] != '.') return helper(v, r, c+1);
+    for (auto ch = 1; ch <= 9; ch++){
+        if (canInsert(v, ch, r, c)){
+            v[r][c] = '0' + ch;
+            if (helper(v, r, c+1)) return true;
+            v[r][c] = '.';
+        }
     }
-    if (v[i][j] != '.') return helper(v, i, j+1);
-    for (char ch = '1'; ch <= '9'; ch++){
-        if (canInsert(v, ch, i, j)) v[i][j] = ch;
-        helper(v, i, j);
-        v[i][j] = '.';
-    }
+    return false;
 }
 
 void solveSudoku(vector<vector<char>>& board) {
@@ -45,14 +36,13 @@ int main(){
          {'8','.','.','.','6','.','.','.','3'},{'4','.','.','8','.','3','.','.','1'},{'7','.','.','.','2','.','.','.','6'},
          {'.','6','.','.','.','.','2','8','.'},{'.','.','.','4','1','9','.','.','5'},{'.','.','.','.','8','.','.','7','9'}};
     solveSudoku(v);
-    if (solution.empty()) cout<<"\nEmpty\n";
-    else{
-        for (auto x : solution){
-            for (auto ch : x){
-                cout<<ch+" ";
-            }
-            cout<<"\n";
+    cout<<"\n\n";
+    for (auto x : v){
+        for (auto ch : x){
+            cout<<" "<<ch<<" ";
         }
+        cout<<"\n";
     }
+    cout<<"\n\n";
     system("pause");
 }
