@@ -40,3 +40,21 @@ bool isValidSudoku(vector<vector<char>>& v) {
     }
     return true;
 }
+
+int main(){
+    vector<vector<char>> v;
+    v = {{'5','3','.','.','7','.','.','.','.'},{'6','.','.','1','9','5','.','.','.'},{'.','9','8','.','.','.','.','6','.'},
+         {'8','.','.','.','6','.','.','.','3'},{'4','.','.','8','.','3','.','.','1'},{'7','.','.','.','2','.','.','.','6'},
+         {'.','6','.','.','.','.','2','8','.'},{'.','.','.','4','1','9','.','.','5'},{'.','.','.','.','8','.','.','7','9'}};
+    cout<<"\n\nThe Given Sudoku Is : \n\n";
+    for (auto row : v){
+        for (auto ch : row){
+            cout<<ch<<" ";
+        } cout<<"\n";
+    }
+    bool ans = isValidSudoku(v);
+    cout<<"\n\n";
+    if (ans) cout<<"Yes, The Given Sudoku Is Valid.\n\n";
+    else cout<<"No, The Given Sudoku Is Invalid.\n\n"; 
+    system("pause");
+}
