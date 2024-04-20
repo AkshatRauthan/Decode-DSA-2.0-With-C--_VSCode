@@ -38,3 +38,21 @@ void helper(vector<vector<char>>& v, int i, int j){
 void solveSudoku(vector<vector<char>>& board) {
     helper(board, 0, 0);
 }
+
+int main(){
+    vector<vector<char>> v;
+    v = {{'5','3','.','.','7','.','.','.','.'},{'6','.','.','1','9','5','.','.','.'},{'.','9','8','.','.','.','.','6','.'},
+         {'8','.','.','.','6','.','.','.','3'},{'4','.','.','8','.','3','.','.','1'},{'7','.','.','.','2','.','.','.','6'},
+         {'.','6','.','.','.','.','2','8','.'},{'.','.','.','4','1','9','.','.','5'},{'.','.','.','.','8','.','.','7','9'}};
+    solveSudoku(v);
+    if (solution.empty()) cout<<"\nEmpty\n";
+    else{
+        for (auto x : solution){
+            for (auto ch : x){
+                cout<<ch+" ";
+            }
+            cout<<"\n";
+        }
+    }
+    system("pause");
+}
