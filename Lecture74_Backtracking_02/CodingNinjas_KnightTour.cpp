@@ -2,8 +2,6 @@
 #include "vector"
 using namespace std;
 
-#include <bits/stdc++.h> 
-
 vector<vector<int>> board;
 vector<int> x = {-2, -1, -2, -1, 2, 1, 2, 1};
 vector<int> y = {1, 2, -1, -2, 1, 2, -1, -2};
