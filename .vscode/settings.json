@@ -53,7 +53,9 @@
         "climits": "cpp",
         "list": "cpp",
         "set": "cpp",
-        "unordered_set": "cpp"
+        "unordered_set": "cpp",
+        "forward_list": "cpp",
+        "regex": "cpp"
     },
     "editor.defaultFoldingRangeProvider": null,
     "C_Cpp.errorSquiggles": "enabled",
