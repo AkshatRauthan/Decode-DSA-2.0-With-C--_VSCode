@@ -17,9 +17,9 @@ LL findMst(int &src, int n){ // pp = weight, destination
     priority_queue<PP, vector<PP>, greater<>> pq;
     unordered_map<int, int> m;
     unordered_set<int> vis;
-    vector<int> par(n+1);
+    vector<int> par(n);
     LL minWeight = 0;
-    for (int i=1; i<n+1; i++) m[i] = INT_MAX;
+    for (int i=0; i<n; i++) m[i] = INT_MAX;
     pq.push({0, src});
     m[src] = 0;
     int edgeCount= 0;
@@ -51,7 +51,7 @@ int main(){
     cout<<"\n\nEnter The Number Of Vertices In The Graph : \n";
     cin>>e;
     cout<<"\n\nEnter The Source, Destination And Weight Of The "<<e<<" Edges : \n";
-    graph.resize(n+1, list<PP>{});
+    graph.resize(n, list<PP>{});
     int src, dest, wt;
     for (int i=0; i<e; i++) {
         cin>>src>>dest>>wt;
