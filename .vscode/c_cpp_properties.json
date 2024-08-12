@@ -15,9 +15,9 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.22621.0",
-            "compilerPath": "C:/MinGW/bin/g++.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++20",
+            "compilerPath": "C:\\Program Files\\JetBrains\\CLion 2023.2\\bin\\mingw\\bin\\g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
             "intelliSenseMode": "${default}",
             "configurationProvider": "ms-vscode.cmake-tools"
         }

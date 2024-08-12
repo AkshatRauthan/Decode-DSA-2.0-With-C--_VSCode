@@ -14,7 +14,7 @@ void calculateStockSpan(vector<int>& v, vector<int>& ans){
     st.push(0);
     for (int i=1; i<v.size(); i++){
         while (st.size() != 0 && v[i] > v[st.top()]) st.pop();
-        if (st.size() != 0) ans[i] = i-st.top();;
+        if (st.size() != 0) ans[i] = i-st.top();
         st.push(i);
     }
 }

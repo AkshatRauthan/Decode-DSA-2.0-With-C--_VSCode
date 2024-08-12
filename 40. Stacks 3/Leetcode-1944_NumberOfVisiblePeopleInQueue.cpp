@@ -27,5 +27,5 @@ int main(){
     for (int x : count) cout<<x<<"  ";
     cout<<"\n\n";
     system("pause");
-
+    return 0;
 }
